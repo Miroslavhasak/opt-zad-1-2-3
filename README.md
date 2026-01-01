@@ -1,6 +1,8 @@
 Upravovane subory bez bonusov
+
 Zad1
 - pendulum_scr.m
+
 Zad2
 - lidar_scr.m
 - rotZ.n
@@ -9,6 +11,7 @@ Zad2
 - transform_estimate2D.m
 - get_rJ.m
 - ICP_estimate_2D.m
+
 Zad3
 - robot_arm_scr.m
 - get_R_tot.m
