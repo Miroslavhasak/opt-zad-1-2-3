@@ -1,0 +1,57 @@
+
+
+COM_port=9;
+baudrate=250000;
+data_stream_ptr=data_stream_start_mex(COM_port,baudrate);
+clear t
+clear y
+clear data
+
+n=500;
+data=zeros(9,n);
+t=zeros(n,1);
+dist=0;
+for i=1:n
+   
+    [meas,t(i)]=data_stream_read_mex(data_stream_ptr,2,9);
+    [dist,t(i)]=data_stream_read_mex(data_stream_ptr,1,1);
+    dist
+    %a=meas(1:3);
+    %omega=meas(4:6)/360;
+    %theta=meas(7:9);
+    
+    % figure(1);
+    % quiver3(0,0,0,a(1),a(2),a(3),'-r','LineWidth',2)
+    % xlabel('x');
+    % ylabel('y');
+    % zlabel('z');
+    % xlim([-1,1]);
+    % ylim([-1,1]);
+    % zlim([-1,1]);
+    % figure(2);
+    % quiver3(0,0,0,omega(1),omega(2),omega(3),'-r','LineWidth',2)
+    % xlabel('r');
+    % ylabel('p');
+    % zlabel('y');
+    % xlim([-1,1]);
+    % ylim([-1,1]);
+    % zlim([-1,1]);
+    % figure(3);
+    % quiver3(0,0,0,theta(1),theta(2),theta(3),'-r','LineWidth',2)
+    % xlabel('r');
+    % ylabel('p');
+    % zlabel('y');
+    % xlim([-1,1]);
+    % ylim([-1,1]);
+    % zlim([-1,1]);
+    % 
+    % drawnow;
+    %data(:,i)=double(meas);
+end
+
+data_stream_end_mex(data_stream_ptr);
+
+
+
+
+
