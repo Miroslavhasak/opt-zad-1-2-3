@@ -4,7 +4,7 @@ i=0;
     while true
         % 2D rotation matrix from theta_hat (single angle)
         R_hat = [cos(theta_hat), -sin(theta_hat); 
-                 sin(theta_hat),  cos(theta_hat)]; % tu vytvárame ľd rotačnú maticu z aktuálneho odhadu uhla theta %TODO
+                 sin(theta_hat),  cos(theta_hat)]; % tu vytvárame 2d rotačnú maticu z aktuálneho odhadu uhla theta %TODO
         % je to matematický predpis kt otočí určitý bod o konkrétny uhol
         % bez tejto matice by sme nevedeli pohnúť mračnom bodov v kruhovom
         % smere

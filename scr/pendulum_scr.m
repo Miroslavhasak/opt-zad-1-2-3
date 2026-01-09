@@ -31,14 +31,21 @@ B_tilde= [B; zeros(m, r)];  % rozširuje vstupnú maticu aby ladila s novým roz
 % A,B a vahovými maticami Q,R
 
 % --- LQ weighting matrices ---
+% hlavným cieľom bolo aby kyvadlo stabilne stálo v požadovanej polohe,
+% aby veľmi nekmitalo a dosiahlo presnú hodnotu yref bez trvalej chyby
 % určuje kt fyzikálne stavy sú pre nás dôležité
-Q_= diag([1, 1, 0.1]);      % váha na stavy (uhly, rýchlosť) %TODO;
+Q_= diag([1, 1, 0.1]);      % váha na stavy (uhly, rýchlosť) %TODO; chcem aby systém sledoval hlavne uhly preto majú váhu 1 rýchlosť má menšie váhu lebo ju 
+% nepotrebujeme striktne držať na 0 lebo dôležité je kde sa kyvadlo
+% nachádza a nie ako rýchlo sa hýbe
 % určuje ako keby cenu energie kde malé číslo dovoľuje motoru prudšie
 % reagovať
-R_= 0.01;                   % váha na akčný zásah (energiu) %TODO;
+R_= 0.01;                   % váha na akčný zásah (energiu) %TODO; malé číslo sme zvolili preto lebo ak by sme dali prilis velke cislo napr 100 tak motor by
+% sa takmer nepohol a kyvadlo by spadlo 
 % toto číslo vynuluje zvyškovú chybu v ustálenom stave
-Qz= 10;                     % váha na integračnú zložku (odstraňuje trvalú odchýlku) %TODO;
-% spojí všetky váhy do jednej veľkej matice pre vúpočet
+Qz= 10;                     % váha na integračnú zložku (odstraňuje trvalú odchýlku) %TODO; tu sme zvolili tak vysoké číslo pretože naša najvyššia
+% priorita je odstránenie statickej odchýlky, vysoká hodnota Qz prinúti
+% systém ako keby tlačiť na motor dovtedy kým sa y presne nerovná yref
+% spojí všetky váhy do jednej veľkej matice pre výpočet
 Q_tilde= blkdiag(Q_, Qz); %TODO;
 
 % --- Solve Discrete-time Algebraic Riccati Equation ---

@@ -4,6 +4,8 @@ while 1
 
    [r, J] = f(x_hat); 
    
+   % J jacobiho matice alebo aj matica citlivosti hovorí ako sa zmení chyba
+   % pri malej zmene parametrov. určuje smer ktorým treba odhad upraviť
    H=J' * J; % tu rátame hessovu maticu %TODO
    % hessova matica ako keby hovorí o zakrivení chyby 
    % algoritmu pomáha pochopiť, ako sa mení sklon terénu po ktorom 

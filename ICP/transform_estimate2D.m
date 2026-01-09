@@ -28,7 +28,7 @@ r_matrix = pB - pA_transformed;
 r = r_matrix'; 
 r = r(:); 
 df_d_theta= (d_R_hat * pA')'; % vyráta zmenu polohy každého bodu v závislosti od zmeny uhla %TODO
-J= zeros(2*N, 3); % vytvorí prázdnu nulovú maticu kt má ľ riadky pre každý bod a š stĺpce %TODO
+J= zeros(2*N, 3); % vytvorí prázdnu nulovú maticu kt má 2 riadky pre každý bod a 3 stĺpce %TODO
 for i = 1:N
         % Derivácia podľa theta (uhol)
         J(2*i-1 : 2*i, 1) = -df_d_theta(i, :)'; % zapíše vplyv zmeny uhla do jacobiho matice pre každý bod
